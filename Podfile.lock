@@ -1,0 +1,38 @@
+PODS:
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
+    - RxSwift (~> 4.0)
+  - RxFlow (1.6.2):
+    - RxCocoa (>= 4.3.0)
+    - RxSwift (>= 4.3.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+
+DEPENDENCIES:
+  - RxFlow (from `https://github.com/RxSwiftCommunity/RxFlow.git`, branch `develop`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RxAtomic
+    - RxCocoa
+    - RxSwift
+
+EXTERNAL SOURCES:
+  RxFlow:
+    :branch: develop
+    :git: https://github.com/RxSwiftCommunity/RxFlow.git
+
+CHECKOUT OPTIONS:
+  RxFlow:
+    :commit: a41875c23a5e6df2fd2d78bb81e71c8705d36d31
+    :git: https://github.com/RxSwiftCommunity/RxFlow.git
+
+SPEC CHECKSUMS:
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  RxFlow: 2460b8f1d546a7536d3b259536357301030a4140
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+
+PODFILE CHECKSUM: 429c8c0b2b4b8c25fac2875cd4553481d2a9ce22
+
+COCOAPODS: 1.5.3

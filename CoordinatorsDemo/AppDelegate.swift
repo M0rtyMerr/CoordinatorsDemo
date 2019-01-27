@@ -1,19 +1,18 @@
 import UIKit
+import RxFlow
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: UserEditCoordinator!
+    private let coordinator = FlowCoordinator()
     
     func application(_ application: UIApplication,
-                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         guard let navigationController = window?.rootViewController as? UINavigationController else { return true }
-        let user = User(name: "Pavel Gurov", city: City(name: "Moscow"))
-        
-        coordinator = UserEditCoordinator(user: user,
-                                          navigationController: navigationController)
-        coordinator.start()
+        let user = User(name: "Anton Nazarov", city: City(name: "Moscow"))
+        coordinator.coordinate(flow: UserEditFlow(rootViewController: navigationController),
+                               with: OneStepper(withSingleStep: MyStep.userEdit(user)))
         return true
     }
 }

@@ -1,21 +1,19 @@
 import UIKit
+import RxFlow
+import RxCocoa
 
-final class UserEditViewController: UIViewController, UpdateableWithUser {
-    
+final class UserEditViewController: UIViewController, UpdateableWithUser, Stepper {
     // MARK: - Input -
     var user: User? { didSet { updateView() } }
     
-    // MARK: - Output -
-    var onSelectCity: (() -> Void)?
-    
+    let steps = PublishRelay<Step>()
     @IBOutlet private weak var userLabel: UILabel?
     @IBAction private func selectCityTap(_ sender: UIButton) {
-        onSelectCity?()
+        steps.accept(MyStep.selectCity)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateView()
     }
     

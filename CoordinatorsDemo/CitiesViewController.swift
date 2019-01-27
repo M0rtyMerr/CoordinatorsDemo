@@ -1,16 +1,14 @@
 import UIKit
+import RxFlow
+import RxCocoa
 
-final class CitiesViewController: UITableViewController {
-
-    // MARK: - Output -
-    var onCitySelected: ((City) -> Void)?
-    
+final class CitiesViewController: UITableViewController, Stepper {
     // MARK: - Private variables -
     private let cities: [City] = [City(name: "Moscow"),
                                   City(name: "Ulyanovsk"),
                                   City(name: "New York"),
                                   City(name: "Tokyo")]
-    
+    let steps = PublishRelay<Step>()
     // MARK: - Table -
     override func tableView(_ tableView: UITableView,
                             numberOfRowsInSection section: Int) -> Int {
@@ -27,6 +25,6 @@ final class CitiesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        onCitySelected?(cities[indexPath.row])
+        steps.accept(MyStep.selectCityComplete(cities[indexPath.row]))
     }
 }
